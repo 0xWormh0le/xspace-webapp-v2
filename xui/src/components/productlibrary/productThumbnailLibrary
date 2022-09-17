@@ -1,0 +1,14 @@
+import React from "react";
+import {Grid} from "@material-ui/core";
+import ProductThumbnailCard from "./productThumbnailCard";
+
+export default function ProductThumbnailLibrary() {
+
+  return (
+    <Grid container>
+        <Grid item xs={12} s={6} md={3}>
+            <ProductThumbnailCard />
+        </Grid>
+    </Grid>
+  );
+}

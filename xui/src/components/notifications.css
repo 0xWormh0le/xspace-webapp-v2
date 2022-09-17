@@ -1,0 +1,14 @@
+.form-dark{
+    background-color: #ffffffde;
+}
+
+.modal .modal-fluid {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+
+.modal-dialog {
+    max-width: 500px;
+    margin: 0rem auto;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <settings>
+    <preloader image="{{preloaderImagePath}}"/>
+    <userInterface showZoomButtons="true" showToolTips="true" showHotspotsButton="false" showFullScreenButton="true" showTogglePlayButton="true" showArrows="true" toolbarAlign="center" toolbarBackColor="transparent" toolbarHoverColor="#808285" toolbarForeColor="#A7A9AE" toolbarBackAlpha="0" toolbarAlpha="1" showProgressNumbers="true" showFullScreenToolbar="true" fullScreenBackColor="#FFFFFF" toolbarPosition="0" customCursorClass="default_cursor" viewerHint="" />
+    <control dragSpeed="0.75" doubleClickZooms="true" disableMouseControl="false" showHighresOnFullScreen="true" mouseHoverDrag="false" hideHotspotsOnLoad="false" hideHotspotsOnZoom="true" rowSensitivity="15" dragSensitivity="10" inBrowserFullScreen="false" doubleClickFullscreen="true" zoomSteps="1" zoomSpeed="300" singleClickZooms="true" pauseOnPreload="false" resumePreloadOnHover="false" />
+    <rotation firstImage="0" rotate="once" rotatePeriod="1" bounce="false" rotateDirection="-1" forceDirection="false" inertiaRelToDragSpeed="true" inertiaTimeToStop="700" inertiaMaxInterval="120" useInertia="true" flipHorizontalInput="false" flipVerticalInput="false" bounceRows="true" rowsOnSingleIndex="false" flipAxis="false" />
+  </settings>
+  <hotspots/>
+  <images rows="{{rowCount}}" highresWidth="2000" highresHeight="2000">
+    {% for prodImg in prodImgList %}
+    <image src="{{prodImg[0]}}">
+      <highres src="{{prodImg[1]}}"/>
+    </image>
+    {% endfor %}
+  </images>
+</config>

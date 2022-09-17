@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>XSPACE 3D</title>
+
+        <!-- Babylon.js -->
+        <script src="https://code.jquery.com/pep/0.4.2/pep.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/gltf_validator.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+    </head>
+<body>
+    <canvas id="renderCanvas" touch-action="none"></canvas>
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+
+        function createScene() {
+        
+            var scene = new BABYLON.Scene(engine);
+            //Adding a light
+            var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(20, 20, 100), scene);
+            var model = '';
+            var count = 1;
+            //Adding an Arc Rotate Camera
+            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, BABYLON.Vector3.Zero(), scene);
+            camera.attachControl(canvas, false);
+
+            var url = document.URL;
+            var uri = new URL(url);
+            var key = uri.searchParams.get("key");
+            var file = uri.searchParams.get("filename");
+            var link = "https://d27vruithpdhv2.cloudfront.net" + key; 
+
+
+            BABYLON.SceneLoader.Append(link, file, scene, function (meshes) {
+                scene.createDefaultCameraOrLight(true, true, true);
+                scene.activeCamera.useAutoRotationBehavior = false;
+                scene.activeCamera.lowerRadiusLimit = 1;
+                scene.activeCamera.upperRadiusLimit = 100;
+            
+                scene.activeCamera.alpha = 0.8;
+            
+                scene.lights[0].dispose();
+                var light = new BABYLON.DirectionalLight("light1", new BABYLON.Vector3(-2, -6, -2), scene);
+                light.position = new BABYLON.Vector3(20, 60, 20);
+                light.shadowMinZ = 30;
+                light.shadowMaxZ = 180;
+                light.intensity = 5;
+            
+                var generator = new BABYLON.ShadowGenerator(512, light);
+                generator.useContactHardeningShadow = true;
+                generator.bias = 0.01;
+                generator.normalBias = 0.05;
+                generator.contactHardeningLightSizeUVRatio = 0.08;
+                scene.debugLayer.show();
+            
+                var helper = scene.createDefaultEnvironment({
+                    skyboxSize: 1500,
+                    groundShadowLevel: 0.5,
+                });
+            
+                helper.setMainColor(BABYLON.Color3.White());
+            
+                scene.environmentTexture.lodGenerationScale = 0.6;
+            });
+        
+            return scene;
+        }
+        
+        
+        var engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+        var scene = createScene();
+
+        engine.runRenderLoop(function () {
+            if (scene) {
+                scene.render();
+            }
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+</body>
+</html>

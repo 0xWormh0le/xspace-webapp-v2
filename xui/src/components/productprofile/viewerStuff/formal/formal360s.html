@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>XSPACE 360 Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mladenilic/threesixty.js/dist/threesixty.js"></script>
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        #threesixty {
+            background-size: contain;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="threesixty"></div>
+        <div class="buttons-wrapper">
+            <button class="button" id="prev">Prev</button>
+            <button class="button" id="next">Next</button>
+        </div>
+    </div>
+    <script>
+
+        var s3url = "https://storagev2.s3-us-west-2.amazonaws.com/none/products/dwtczrchqp/360/PVC+00106/images/PVC+00106_0.png";
+        var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", 'https://storagev2.s3-us-west-2.amazonaws.com/none/products/dwtczrchqp/360/PVC+00106/PVC+00106.xml', true);
+        
+        xhr.responseType = 'document';
+
+        var arr = [];
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+
+                var elements = xhr.responseXML;
+                var images = elements.getElementsByTagName("image").length;
+                console.log(images);
+
+
+                for (var i = 0; i < images; i++) {
+                    var obj = s3Array(i);
+                    arr.push(obj);
+                }
+
+            }
+            else {
+                alert('Request failed. Returned status of ' + xhr.status);
+            }
+            console.log(Array.isArray(arr)) 
+            return arr
+        }
+        xhr.send()
+        console.log(arr)
+
+        function s3Array(e) {
+            var url = document.URL;
+            var uri = new URL(url);
+            var key = uri.searchParams.get("key");
+            var xmml = "https://storagev2.s3-us-west-2.amazonaws.com/none/products/dwtczrchqp/360/PVC+00106/PVC+00106.xml"
+            var ky = '/none/products/dwtczrchqp/360/PVC+00106/images/'
+            var file = uri.searchParams.get("filename");
+            var link = "https://d27vruithpdhv2.cloudfront.net" + ky; 
+            var xmlink = "https://d27vruithpdhv2.cloudfront.net/none/products/dwtczrchqp/360/PVC+00106/images/"
+            var prodName = 'PVC+00106_';
+            var fname = prodName+e.toString()+'.png';
+            var basePath = link + fname
+            return basePath 
+
+        }
+
+    </script>
+
+</body>
+
+</html>

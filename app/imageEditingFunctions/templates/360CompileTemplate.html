@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+    <title>{{productfolderName}}</title>
+
+    <!-- Use this meta tag on your mobile page -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Use these three includes on your pages under <head> section -->
+    <meta charset="utf-8"/>
+
+    <link type="text/css" rel="stylesheet" href="{{imageRotatorPath}}/html/css/basic.css"/>
+    <script type="text/javascript" src="{{imageRotatorPath}}/html/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="{{imageRotatorPath}}/html/js/imagerotator.js"></script>
+
+    <!-- MASTER CONFIG WILL ADJUST THESE SETTINGS -->
+    <style type= "text/css">
+
+    html, body
+    {
+        padding: 0;
+        margin: 0;
+    }
+
+    /*-- Use #content CSS to customize size, position, border, etc of your 360 view --*/
+
+    #content
+    {
+        width: 600px;
+        height: 600px;
+        /* border: 1px dotted #cecfd2; */
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="content">
+
+        <div id="wr360PlayerId" class="wr360_player" style="background-color:#FFFFFF;">
+        </div>
+
+        <script language="javascript" type="text/javascript">
+
+            var rotator = WR360.ImageRotator.Create('wr360PlayerId');
+
+            rotator.licenseFileURL = '{{licenseFilePath}}';
+            rotator.settings.configFileURL = '{{configFilePath}}';
+            rotator.settings.graphicsPath = '{{imageRotatorPath}}/html/img/round';
+            rotator.settings.zIndexLayersOn = true;
+            rotator.settings.googleEventTracking = false;
+            rotator.settings.responsiveBaseWidth = 0;
+            rotator.settings.responsiveMinHeight = 0;
+
+            rotator.runImageRotator();
+
+        </script>
+
+    </div>
+
+
+</body>
+
+</html>

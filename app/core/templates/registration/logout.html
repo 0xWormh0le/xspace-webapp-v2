@@ -1,0 +1,25 @@
+{% extends 'home-base4.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Log out" %}{% endblock %}
+
+{% block content %}
+ <div class="container text-center" style="width: 55%;margin-top:100px;padding-top:70px;padding-bottom:100px;">
+   <div class="jumbotron">
+    <div class="row">
+
+            <div class="col-md-6">
+                <form method="POST" action="{% url "account_logout" %}">
+                    <legend>{% trans "Log out" %}</legend>
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>{% trans "Are you sure you want to log out?" %}</p>
+                        <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

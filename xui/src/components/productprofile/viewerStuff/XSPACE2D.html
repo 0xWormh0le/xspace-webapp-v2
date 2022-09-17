@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>XSPACE 360 Viewer</title>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+
+    </head>
+
+   <body>
+
+    <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
+
+    <script>
+            var xhr = new XMLHttpRequest(); 
+            var xhmlDoc = 'https://storagev2.s3-us-west-2.amazonaws.com/none/Sample+360s/PVC+00108/360/PVC+00108/360/360_assets/PVC+00108/';
+            xhr.open("GET", 'https://storagev2.s3-us-west-2.amazonaws.com/none/Sample+360s/PVC+00118/360/PVC+00118/360/360_assets/PVC+00118/PVC+00118.xml', true);
+            
+            xhr.responseType = 'document';
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+    
+                var elements = xhr.response
+                console.log(xhr.response)
+                
+                } 
+                else {
+                alert('Request failed. Returned status of ' + xhr.status);
+                }
+            }
+            xhr.send()
+    </script>
+
+   </body>
+
+</html>

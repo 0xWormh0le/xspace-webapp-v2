@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>XSPACE 360 Viewer</title>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #productdisplay {
+                width: 500px;
+                height: 500px;
+                touch-action: none;
+            }
+
+            img {
+                position: relative;
+                width: 500px;
+                height: auto;
+            }
+        </style>
+
+    </head>
+
+   <body>
+
+
+    <div id="productdisplay" touch-action="none">
+        <section id="productdisplays">
+            <figure class="visible">
+                <img src="https://storagev2.s3-us-west-2.amazonaws.com/none/products/dwtczrchqp/360/PVC+00106/images/PVC+00106_0.png" alt="Efficient Cars">       
+            </figure>
+        </section> 
+    </div> 
+
+    <script>
+
+        //assetName_n(number).png
+        //
+
+        var url = document.URL;
+        var uri = new URL(url);
+        var key = uri.searchParams.get("key");
+        var ky = '/none/Sample+360s/PVC+00108/360/PVC+00108/360/360_assets/PVC+00108/images/PVC+00108_9.png'
+        var file = uri.searchParams.get("filename");
+        var link = "https://d27vruithpdhv2.cloudfront.net" + ky; 
+        var bklink = "https://storagev2.s3-us-west-2.amazonaws.com" + ky;
+        
+        
+        var i = 0;
+        var asset_path = ""
+        
+        function collects3() {
+            const sectionA = document.getElementById('productdisplays');
+            let html = '';
+            for (x of elements) {
+                if ( x.href.match(/\.(jpe?g|png)$/) ) { 
+                    let img = document.createElement("img");
+                    img.src = x.href;
+                    document.body.appendChild(img);
+                } 
+            };
+        }
+    
+            //----------  IF THERE ARE 360 ASSETS
+        var s3url = "https://storagev2.s3-us-west-2.amazonaws.com/none/products/dwtczrchqp/360/PVC+00106/images/PVC+00106_0.png"
+        var xhr = new XMLHttpRequest(); 
+
+        xhr.open("GET", 'https://storagev2.s3-us-west-2.amazonaws.com/none/Sample+360s/PVC+00108/360/PVC+00108/360/360_assets/PVC+00108/images/PVC+00108_9.png', true);
+
+        xhr.responseType = 'document';
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+
+            var elements = xhr.response
+            for (x of elements) {
+                if ( x.href.match(/\.(jpe?g|png)$/) ) { 
+                    let img = document.createElement("img");
+                    img.src = x.href;
+                    document.body.appendChild(img);
+                } 
+            };
+            } 
+            else {
+            alert('Request failed. Returned status of ' + xhr.status);
+            }
+        }
+        xhr.send()
+
+
+
+    </script>
+
+   </body>
+
+</html>

@@ -1,0 +1,60 @@
+{% extends 'e-commerce-index.html' %}
+
+{% block content %}
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- MAIN -->
+        <div class="col">
+            <br />
+            <h1>Quickstart</h1>
+            <p>Welcome to the XSPACE Connector Plugin, {{firstname}} {{lastname}}. Select from multiple quickstart actions to get started & manage your connection between {{platformName}} and XSPACE.</p>
+            <hr />
+            <h2>Select Quickstart Option:</h2>
+            <br />
+            <div class="flex-wrap">
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Pull Products</h5>
+                        <p class="card-text">Request an update from XSPACE servers to transfer new products to {{ platform }}, otherwise will update all your product information. </p>
+                        <a href="#" class="btn btn-primary">Pull</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Push Products</h5>
+                        <p class="card-text">Pushes newer product information from {{ platform }} to your XSPACE account, otherwise will update all your product information on XSPACE.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Pull Content</h5>
+                        <p class="card-text">Gathers new product content (2D Photos, 360s, & 3D Models) from XSPACE to {{  platform }}.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Push Content</h5>
+                        <p class="card-text">Pushes new product content (2D Photos, 360s, & 3D Models) from {{  platform }} to XSPACE .</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- Main Col END -->
+
+    </div><!-- body-row END -->
+{% endblock %}

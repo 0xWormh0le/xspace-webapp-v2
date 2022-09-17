@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XSPACE 360</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript">
+        
+        
+        function imgLoad(url) {
+            'use strict';
+            // Create new promise with the Promise() constructor;
+            // This has as its argument a function with two parameters, resolve and reject
+            return new Promise(function (resolve, reject) {
+                // Standard XHR to load an image
+                var request = new XMLHttpRequest();
+                request.open('GET', url);
+                request.responseType = 'document';
+                
+                // When the request loads, check whether it was successful
+                request.onload = function () {
+                    if (request.status === 200) {
+                        // If successful, resolve the promise by passing back the request response
+                        resolve(request.response);
+                        console.log(request.response)
+                    } else {
+                        // If it fails, reject the promise with a error message
+                        reject(new Error('Image didn\'t load successfully; error code:' + request.statusText));
+                    }
+                };
+              
+                request.onerror = function () {
+                    // Also deal with the case when the entire request fails to begin with
+                    // This is probably a network error, so reject the promise with an appropriate message
+                    reject(new Error('There was a network error.'));
+                };
+              
+                // Send the request
+                request.send();
+            });
+        }
+
+        function loadImage(url) {
+            'use strict';
+            // Get a reference to the body element, and create a new image object
+            var body = document.querySelector('body'),
+                myImage = new Image();
+          
+            myImage.crossOrigin = ""; // or "anonymous"
+            
+            // Call the function with the URL we want to load, but then chain the
+            // promise then() method on to the end of it. This contains two callbacks
+            imgLoad(url).then(function (response) {
+                // The first runs when the promise resolves, with the request.reponse specified within the resolve() method.
+                var imageURL = window.URL.createObjectURL(response);
+                myImage.src = imageURL;
+                console.log(myImage.src)
+                body.appendChild(myImage);
+                // The second runs when the promise is rejected, and logs the Error specified with the reject() method.
+            }, function (Error) {
+                console.log(Error);
+            });
+        }
+        
+        loadImage('https://storagev2.s3-us-west-2.amazonaws.com/none/Sample+360s/PVC+00108/360/PVC+00108/360/360_assets/PVC+00108/PVC+00108.xml')
+    
+    </script>
+</head>
+<body>
+	<div id="showImage" width="500" height="500">
+        
+    </div>
+
+</body>
+</html>

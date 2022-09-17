@@ -1,0 +1,14 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="UTF-8" />
+         <meta name="viewport" content="width=device-width" />
+         <title>XSPACE</title>
+         <script type="text/javascript">(function() {var walkme = document.createElement('script'); walkme.type = 'text/javascript'; walkme.async = true; walkme.src = 'https://cdn.walkme.com/users/4c021a6536bd4a47b2e85ac8a93e7ea4/test/walkme_4c021a6536bd4a47b2e85ac8a93e7ea4_https.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(walkme, s); window._walkmeConfig = {smartLoad:true}; })();</script>
+    </head>
+    <body>
+         <div id="root">
+         </div>
+           {% render_bundle 'main' %}
+    </body>

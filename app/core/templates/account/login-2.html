@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    {% extends 'home-base4.html' %}
+    {% block title %}Login {% endblock %}
+    <style>
+      .form-signin {
+        max-width: 150px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+
+      login{
+        padding-bottom: 10px;
+        width: 1140px;
+        max-width: 100%;
+      }
+      .push{
+        margin-top: 50px;
+      }
+      .body{
+            background: url(/static/app/img/net-dark.png) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+      }
+      .btn{
+        background-color: teal;
+      }
+      .html{
+
+      }
+
+    </style>
+    <link rel="stylesheet" href="/static/css/form.css">
+
+    {% block content %}
+    <body>
+      <div class="push"></div>
+      <div class="container text-center" style="width: 55%;">
+          <center><img src="/static/app/img/logo.png" width="600px" style="margin-bottom:20px;"></center>
+         <div class="jumbotron">
+
+           <div class="row">
+
+              <div class="col-md-6">
+                  <form class="form-signin" id="login_form" method="post" action="/login/">
+                  {% csrf_token %}
+                  {% load bootstrap %}
+                  <h2 class="form-signin-heading">Login</h2>
+                  <br>
+                  <input type="text" name="email" class="form-control" placeholder="Email" value="" required autofocus>
+                  <br>
+                  <input type="password" name="password" class="form-control" placeholder="Password" value=""required>
+                  <br>
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                  <input type="hidden" name="submit" value="submit" />
+                </form>
+             </div>
+             <div class="col-md-6">
+               <p class="lead">Register now for <span class="text-success">FREE</span></p>
+                      <ul class="list-unstyled" style="line-height: 2">
+                          <li><span class="fa fa-check text-success"></span> Manage Product Visuals (3D & 2D)</li>
+                          <li><span class="fa fa-check text-success"></span> Communicate With Product Partners </li>
+                          <li><span class="fa fa-check text-success"></span> Integrate easily into Shopify, Magento, WooCommerce or your own web app.</li>
+                          <li><span class="fa fa-check text-success"></span> Developer Friendly API</li>
+                          <li><span class="fa fa-check text-success"></span>Automatically Update Product Information</li>
+                      </ul>
+                      <p><a href="/register" class="btn btn-info btn-block">Sign Me Up!</a></p>
+
+             </div>
+          </div>
+         </div>
+      </div>
+
+
+
+    </body>
+{% endblock %}
+</html>

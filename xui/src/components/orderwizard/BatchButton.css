@@ -1,0 +1,39 @@
+.batch-button {
+  min-height: 68px;
+  min-width: 135px;
+  max-width: 68px;
+  max-height: 68px;
+  background-color: #CCC;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  word-wrap: break-word;
+  vertical-align: middle;
+  text-align: center;
+  margin: 10px;
+  padding: 2px;
+  transition: background-color 0.5s ease;
+  transition: border-color 0.3s ease;
+  background-color: #FFF;
+  border: 2px solid #CCC;
+  background: url('https://s3.amazonaws.com/storage.xspaceapp.com/media/img/cube-single(1).png');
+  background-size: 128px 128px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  font-weight: bold;
+}
+
+.batch-button:hover {
+  border: 2px solid rgb(80, 210, 186);
+}
+
+.batch-button-selected {
+  background: none;
+  background-color: rgb(80, 210, 186);
+}
+
+.batch-button p {
+  font-size: 10pt;
+  lines: 3;
+
+}

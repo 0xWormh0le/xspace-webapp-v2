@@ -1,0 +1,138 @@
+.product-manage{
+	margin-top: 105px;
+	font-family: Roboto;
+	color: #000000;
+}
+.product-manage-text{
+	font-family: Roboto;
+	font-style: italic;
+	font-weight: 300;
+	line-height: 26px;
+	font-size: 19px;
+}
+.select-active-store{
+    border: 1px solid #000000;
+    border-radius: 2px;
+    font-size: 20px;
+    width: 333px;
+    height: 43px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
+.active-product-label{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 46px;
+	font-size: 20px;
+	color: #000000;
+}
+.pull-right{
+	float: right;
+}
+.add-product-buttton{
+	width: 194px;
+    white-space: normal;
+    font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 15px;
+	text-align: center;
+	letter-spacing: 1.6px;
+	text-transform: uppercase;
+	background: #2D9CDB;
+}
+.product-queue{
+	width: 780px;
+    height: 500px;
+    left: 0px;
+    top: 13px;
+    background: #F2F2F2;
+    border: 2px solid #B8B8B8;
+}
+
+.product-queue-footer{
+	width: 780px;
+    position: absolute;
+    height: 63px;
+    left: 0px;
+    margin-top: 422px;
+    background: #333333;
+}
+
+.product-push{
+	width: 780px;
+    height: 500px;
+    left: 0px;
+    top: 13px;
+    background: #F2F2F2;
+    border: 2px solid #B8B8B8;
+}
+
+.product-push-footer{
+	width: 879px;
+    position: absolute;
+    height: 63px;
+    left: 0px;
+    background: #333333;
+}
+
+.pull-push-modal{
+	width: 800px;
+    margin-left: -16px;
+    margin-top: -16px;
+    background: #333333;
+}
+
+.modal-pop-text{
+	position: absolute;
+    width: 249px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 26px;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: -19px;
+}
+.product-update-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 26px;
+    font-size: 14px;
+    margin-left: 19px;
+    margin-top: 19px;
+    position: absolute;
+    text-decoration-line: underline;
+    color: #2D9CDB;
+}
+
+.next-page{
+    display: inline;
+    font-size: 15px !important;
+    font-weight: 600;
+    color: #ffffff !important;
+    background-color: #29F !important; 
+    padding: 6px 12px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.active-page{
+    background-color: #29F !important; 
+    color: #ffffff !important;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 22px;
+    padding: 4px 4px
+}
+
+.in-active-page{
+    background-color: #fff ;
+    color: rgb(184, 184, 184) !important;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 22px;
+    padding: 4px 4px
+}

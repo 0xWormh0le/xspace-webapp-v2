@@ -1,0 +1,3 @@
+.checkbox-red [type="checkbox"]:checked+label:before {
+    border-color: transparent #ff2626 #ff2626 transparent;
+}

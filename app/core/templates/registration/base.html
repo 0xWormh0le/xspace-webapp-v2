@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+
+    <title> {% block title %}{% endblock %}| XSPACE </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" type="image/png" href="/static/img/app/favicon.png"/>
+      <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+        /* Necessary for full page carousel*/
+
+        .body{
+            background-color: #dedede;
+        }
+
+        html,
+        body,
+        {
+            height: 100%;
+            background-color: #dedede;
+        }
+
+
+        .view {
+            height: 100%;
+            background-color:#2a2a2a
+        }
+
+        /* Navigation*/
+
+        .navbar nav{
+            background-color: transparent;
+        }
+        html{
+            background-color: #dedede;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .scrolling-navbar {
+            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            transition: background .5s ease-in-out, padding .5s ease-in-out;
+        }
+
+        .top-nav-collapse {
+            background-color: #50567a;
+        }
+
+        footer.page-footer {
+            background-color: #50567a;
+            margin-top: 0;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #50567a;
+            }
+        }
+        /* Carousel*/
+
+        .carousel,
+        .carousel-item,
+        .active {
+            height: 100%;
+        }
+
+        .carousel-inner {
+            height: 100%;
+        }
+
+        .carousel-item:nth-child(1) {
+            background-image: url("/static/app/img/cubes.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .carousel-item:nth-child(2) {
+            background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20(2).jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .carousel-item:nth-child(3) {
+            background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20(3).jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        /*Caption*/
+
+        .flex-center {
+            color: #fff;
+        }
+        .navbar-brand{
+             margin-right: -20px;
+            padding-bottom: 10px;
+        }
+        .nav{
+            padding-top: 12px;
+        }
+        @media (min-width: 776px) {
+            .carousel .view ul li {
+                display: inline;
+            }
+            .carousel .view .full-bg-img ul li .flex-item {
+                margin-bottom: 1.5rem;
+            }
+        }
+        .heartimg{
+            display: block;
+            margin: auto;
+            padding-bottom: 7px;
+        }
+        .btn-primary{
+            background: #00B13B ;
+        }
+        .btn-default {
+        background: #F00;
+        }
+        .btn-default:focus, .btn-default:hover {
+            background-color: #fe3c3c  !important;
+        }
+        .btn-primary:focus, .btn-primary:hover {
+        background-color: #2FC661 !important;
+        }
+        .push{
+            padding-top: 100px;
+        }
+
+                /* E-commerce */
+        .product-box {
+          padding: 0;
+          border: 1px solid #e7eaec;
+        }
+        .product-box:hover,
+        .product-box.active {
+          border: 1px solid transparent;
+          -webkit-box-shadow: 0 3px 7px 0 #a8a8a8;
+          -moz-box-shadow: 0 3px 7px 0 #a8a8a8;
+          box-shadow: 0 3px 7px 0 #a8a8a8;
+        }
+        .product-imitation {
+          text-align: center;
+          padding: 90px 0;
+          background-color: #f8f8f9;
+          color: #bebec3;
+          font-weight: 600;
+        }
+        .cart-product-imitation {
+          text-align: center;
+          padding-top: 30px;
+          height: 80px;
+          width: 80px;
+          background-color: #f8f8f9;
+        }
+        .product-imitation.xl {
+          padding: 120px 0;
+        }
+        .product-desc {
+          padding: 20px;
+          position: relative;
+        }
+        .ecommerce .tag-list {
+          padding: 0;
+        }
+        .ecommerce .fa-star {
+          color: #d1dade;
+        }
+        .ecommerce .fa-star.active {
+          color: #f8ac59;
+        }
+        .ecommerce .note-editor {
+          border: 1px solid #e7eaec;
+        }
+        table.shoping-cart-table {
+          margin-bottom: 0;
+        }
+        table.shoping-cart-table tr td {
+          border: none;
+          text-align: right;
+        }
+        table.shoping-cart-table tr td.desc,
+        table.shoping-cart-table tr td:first-child {
+          text-align: left;
+        }
+        table.shoping-cart-table tr td:last-child {
+          width: 80px;
+        }
+        .product-name {
+          font-size: 16px;
+          font-weight: 600;
+          color: #676a6c;
+          display: block;
+          margin: 2px 0 5px 0;
+        }
+        .product-name:hover,
+        .product-name:focus {
+          color: #1ab394;
+        }
+        .product-price {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: #ff0000;
+          padding: 6px 12px;
+            border-radius:15px;
+          position: absolute;
+          top: -32px;
+          right: 0px;
+        }
+
+            .product-price2 {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: #0093FF !important;
+            border-radius:15px;
+          padding: 6px 12px;
+          position: absolute;
+          top: -32px;
+          right: 71px;
+        }
+            .product-price3 {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: #00B13B !important;
+          padding: 6px 12px;
+          position: absolute;
+          top: -32px;
+          border-radius:15px;
+          right: 114px;
+        }
+        .product-price3-off {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          padding: 6px 12px;
+          position: absolute;
+          top: -32px;
+          border-radius:15px;
+          right: 114px;
+          background-color: #636363;
+          border-color: #c3c3c3;
+        }
+        .product-price2-off {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          border-radius:15px;
+          padding: 6px 12px;
+          position: absolute;
+          top: -32px;
+          right: 71px;
+          background-color: #636363;
+
+          border-color: #c3c3c3;
+        }
+        .product-detail .ibox-content {
+          padding: 30px 30px 50px 30px;
+        }
+        .image-imitation {
+          background-color: #f8f8f9;
+          text-align: center;
+          padding: 200px 0;
+        }
+        .product-main-price small {
+          font-size: 10px;
+        }
+        .product-images {
+          margin: 0 20px;
+        }
+
+        .ibox {
+          clear: both;
+          margin-bottom: 25px;
+          margin-top: 0;
+          padding: 0;
+        }
+        .ibox.collapsed .ibox-content {
+          display: none;
+        }
+        .ibox.collapsed .fa.fa-chevron-up:before {
+          content: "\f078";
+        }
+        .ibox.collapsed .fa.fa-chevron-down:before {
+          content: "\f077";
+        }
+        .ibox:after,
+        .ibox:before {
+          display: table;
+        }
+        .ibox-title {
+          -moz-border-bottom-colors: none;
+          -moz-border-left-colors: none;
+          -moz-border-right-colors: none;
+          -moz-border-top-colors: none;
+          background-color: #ffffff;
+          border-color: #e7eaec;
+          border-image: none;
+          border-style: solid solid none;
+          border-width: 3px 0 0;
+          color: inherit;
+          margin-bottom: 0;
+          padding: 14px 15px 7px;
+          min-height: 48px;
+        }
+        .ibox-content {
+          background-color: #ffffff;
+          color: inherit;
+          padding: 15px 20px 20px 20px;
+          border-color: #e7eaec;
+          border-image: none;
+          border-style: solid solid none;
+          border-width: 1px 0;
+        }
+        .ibox-footer {
+          color: inherit;
+          border-top: 1px solid #e7eaec;
+          font-size: 90%;
+          background: #ffffff;
+          padding: 10px 15px;
+        }
+
+    </style>
+
+    {% block extrahead %}{% endblock %}
+    </head>
+
+    <body>
+
+
+    <div style="display:block;margin-bottom:35px;"></div>
+
+        <!--/.Navbar-->
+    {% block content %}
+
+    {% endblock %}
+    </div>
+
+
+
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/static/app/js/jquery-2.2.3.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/static/app/js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/static/app/js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/static/app/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/static/app/js/search.js"></script>
+  </body>
+</html>

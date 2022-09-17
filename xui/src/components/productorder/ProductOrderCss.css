@@ -1,0 +1,112 @@
+.left-menu-bar-inactive{
+	width: 250px;
+    height: 60px;
+    left: -1px;
+    top: -10px;
+    background: #4F4F4F;
+    -webkit-box-shadow: 2px;
+    box-shadow: 2px;
+    -webkit-box-shadow: 2px 8px 6px rgba(0, 0, 0, 0.35);
+    box-shadow: 2px 8px 6px rgba(0, 0, 0, 0.35);
+}
+
+.left-menu-bar-api-active {
+    width: 250px;
+    height: 60px;
+    left: 298px;
+    top: 268px;
+    background: #D10000;
+    -webkit-box-shadow: 2px 8px 6px rgba(0, 0, 0, 0.35);
+    box-shadow: 2px 8px 6px rgba(0, 0, 0, 0.35);
+}
+
+.myacc-left{
+	margin-top: 0px;
+    margin-left: -15px;
+}
+
+.product-order-font{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 26px;
+    font-size: 20px;
+    color: #828282
+}
+
+.order-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 26px;
+    font-size: 34px;
+}
+.product-order-content{
+    padding: 9px 0;
+    line-height: 20px;
+    font-size: 12px;
+    color: #333330;
+    text-align: left;
+}
+
+.custom-ellipsis{
+    font-size: 20px;
+}
+
+.btn-default:not([disabled]):not(.disabled):active, .btn-default:not([disabled]):not(.disabled).active, .show > .btn-default.dropdown-toggle{
+    background-color: #27AE60 !important;
+}
+.custom-popver{
+    height: 35px;
+    background-color: transparent !important;
+    box-shadow: none;
+    z-index: 2;
+    position: absolute;
+    padding:10px;
+    margin-top:-5px;
+}
+.custom-popver:hover{
+    box-shadow: none;
+}
+.custom-popver:active{
+    box-shadow: none;
+    background-color: transparent !important;
+}
+.icon-popover{
+    display: inline-block;
+    position: absolute;
+    height: 46px;
+    z-index: 2;
+}
+.popover{
+    margin-left: 235px;
+    transform: translate3d(-202px,-86px,0px) !important;
+}
+
+.action-label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 26px;
+    font-size: 18px;
+    color: #828282;
+    width: 174px;
+}
+.view-order-modal{
+    width:100%;
+    background: #F2F2F2;
+    border: 2px solid #B8B8B8;
+    margin-top: 8;
+}
+.view-order-modal-label{
+
+}
+
+.myorder-loader{
+    margin-top: 200px;
+    position: absolute;
+    margin-left: -74px;
+}
+.qr-label-select{
+    margin-bottom: 0px;
+}

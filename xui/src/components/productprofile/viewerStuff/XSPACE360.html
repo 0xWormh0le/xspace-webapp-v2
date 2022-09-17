@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>XSPACE 360 Viewer</title>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+
+    </head>
+
+   <body>
+
+    <div id="productdisplay" touch-action="none">
+
+    </div> 
+
+    <script>
+            //----------  IF THERE ARE 360 ASSETS
+        var s3url = "https://storagev2.s3-us-west-2.amazonaws.com/none/Sample+360s/PVC+00123R/360/PVC+00123R/360/360_assets/PVC+00123R/images/PVC+00123R_0.png"
+        var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "XMLHttpRequest()", true);
+        xhr.responseType = 'document';
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+            var elements = xhr.response.getElementsByTagName("a");
+            for (x of elements) {
+                if ( x.href.match(/\.(jpe?g|png|gif)$/) ) { 
+                    let img = document.createElement("img");
+                    img.src = x.href;
+                    document.body.appendChild(img);
+                } 
+            };
+            } 
+            else {
+            alert('Request failed. Returned status of ' + xhr.status);
+            }
+        }
+        xhr.send()
+        console.log(xhr)
+
+        
+        var url = document.URL;
+        var uri = new URL(url);
+        var key = uri.searchParams.get("key");
+        var file = uri.searchParams.get("filename");
+        var link = "https://d27vruithpdhv2.cloudfront.net" + key; 
+        
+        var slideInterval = 4000;
+
+        function getFigures() {
+            return document.getElementById(‘carousel’).getElementsByTagName(‘figure’);
+        }
+
+        function moveForward() {
+            var pointer = 0;
+            var figures = getFigures();
+            for (var i = 0; i < figures.length; i++) {
+            if (figures[i].className == ‘visible’) {
+            figures[i].className = ‘hidden’;
+            pointer = i;
+            }
+            }
+            if (++pointer == figures.length) {
+            pointer = 0;
+            }
+            figures[pointer].className = ‘visible’;
+            setTimeout(moveForward, slideInterval);
+           }
+
+        function startPlayback() { 
+            setTimeout(moveForward, slideInterval);
+           }
+        
+        if (assets360) {
+            if (assets360.length > 0) {
+            let threeSixtyImages = (
+                assets360.map((asset, idx) => {
+    
+                    var licensepath = 'https://s3.amazonaws.com/storage.xspaceapp.com/license.lic';
+                    //var csspath = asset.css;
+                    //var jquerypath = asset.jquery;
+                    var imagerotatorpath = asset.imagerotator;
+                    var xmlpath = asset.xml;
+                    var baseimagepath = asset.baseImage;
+
+
+    
+                    var htmldata = '<link type="text/css" rel="stylesheet" href="' + csspath + '"/>'
+                        + '<div id="content" style="width: ' + 1000 + ';height:' + 1000 + ';border: 1px dotted #cecfd2;">'
+                        + '<div id="wr360PlayerId" class="wr360_player" style="background-color:#FFFFFF;">'
+                        + '</div>'
+                        + '</div>';
+        
+    
+    
+                    //loadScript(jquerypath);
+                    //loadScript(imagerotatorpath);
+    
+                    document.getElementById("productdisplay").innerHTML = htmldata;
+    
+                    var rotator = window.WR360.ImageRotator.Create("wr360PlayerId");
+                    rotator.licenseFileURL = licensepath;
+                    rotator.settings.configFileURL = xmlpath;//+"published/360_assets/"+productLabel+"/"+productLabel+".xml";
+                    rotator.settings.graphicsPath = baseimagepath;
+                    rotator.settings.zIndexLayersOn = false;
+                    rotator.settings.googleEventTracking = false;
+                    rotator.settings.responsiveBaseWidth = 0;
+                    rotator.settings.responsiveMinHeight = 0;
+        
+                    rotator.runImageRotator();
+        
+                    return (
+                    <div><p>{asset.css}</p>
+                    <p>{asset.jquery}</p>
+                    <p>{asset.xml}</p>
+                    <p>{asset.baseImage}</p></div>
+    
+                    )
+                })
+            )
+    
+            let vCarouselImages = (
+                <div></div>
+            )
+    
+            
+            let threeSixtySlider = (
+                <StyledSlider showArrows={true} autoSlide={false} cardsToShow={1} hideArrowsOnNoSlides={true}>
+                {threeSixtyImages}
+                </StyledSlider>
+            );
+    
+    
+            if (this.state.viewMode === 1) {
+                previewView = threeSixtySlider
+            }
+    
+            }
+    
+        }
+
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () { 
+                engine.resize();
+        });
+    </script>
+
+   </body>
+
+</html>

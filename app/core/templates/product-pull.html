@@ -1,0 +1,31 @@
+{% extends 'e-commerce-index.html' %}
+
+{% block content %}
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- MAIN -->
+        <div class="col">
+            <br />
+            <h1>Pull Products</h1>
+            <p>Request an update from XSPACE servers to transfer new products to {{ platform }}, otherwise will update all your product information.</p>
+            <hr />
+            <h2>Actions:</h2>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" >
+                      <img class="card-img-top" src="/static/img/Arrows-down.png" width="150px"  alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Pull Products</h5>
+                        <p class="card-text"> </p>
+                        <a href="{% url 'product_pull_start' %}?store_hash={{store_hash}}&email={{email}}&bc_user_id={{bc_user_id}}" class="btn btn-primary">Start Product Pull</a>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- Main Col END -->
+
+    </div><!-- body-row END -->
+{% endblock %}
